@@ -1,0 +1,55 @@
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Local.json
+appsettings.*.Local.json
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+publish/
+
+# Test results and coverage
+[Tt]est[Rr]esult*/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+*.trx
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Rider and IntelliJ
+.idea/
+*.sln.iml
+
+# Visual Studio and VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and temporary files
+*.log
+logs/
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

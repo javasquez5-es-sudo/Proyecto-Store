@@ -1,0 +1,101 @@
+@Store_HostAddress = http://localhost:5162
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5ZDk5YjI3LTA1NjAtNDBhYS04ZjJhLTliZmI1M2IxYWM0YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImV4cCI6MTc4NjYxMDA3NSwiaXNzIjoiU3RvcmUiLCJhdWQiOiJTdG9yZSJ9.oM-DvKN-WBL5m8qCFkJHrBhe1OnTiA2CR1eTyBPXbqI
+@AdminPassword = ClaveSegura123
+@UserId = PEGA_AQUI_EL_ID_DEL_USUARIO
+@ArticleId = PEGA_AQUI_EL_ID_DEL_ARTICULO
+
+### Iniciar sesion
+
+POST {{Store_HostAddress}}/api/users/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "{{AdminPassword}}"
+}
+
+### Consultar usuarios
+
+GET {{Store_HostAddress}}/api/users?page=1&pageSize=10
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+### Crear usuario
+
+POST {{Store_HostAddress}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "name": "Jose Administrador",
+  "username": "jose.admin",
+  "password": "ClaveSegura123"
+}
+
+### Consultar usuario por id
+
+GET {{Store_HostAddress}}/api/users/{{UserId}}
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+### Actualizar usuario
+
+PUT {{Store_HostAddress}}/api/users/{{UserId}}
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "name": "Jose Actualizado",
+  "username": "jose.admin",
+  "password": null
+}
+
+### Eliminar usuario
+
+DELETE {{Store_HostAddress}}/api/users/{{UserId}}
+Authorization: Bearer {{Token}}
+
+### Consultar articulos
+
+GET {{Store_HostAddress}}/api/articles?page=1&pageSize=10
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+### Crear articulo
+
+POST {{Store_HostAddress}}/api/articles
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "name": "Teclado mecanico",
+  "description": "Teclado para computadora",
+  "price": 350.50,
+  "photos": "https://ejemplo.com/teclado.jpg",
+  "userId": "{{UserId}}"
+}
+
+### Consultar articulo por id
+
+GET {{Store_HostAddress}}/api/articles/{{ArticleId}}
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+### Actualizar articulo
+
+PUT {{Store_HostAddress}}/api/articles/{{ArticleId}}
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "name": "Teclado mecanico RGB",
+  "description": "Teclado actualizado",
+  "price": 399.90,
+  "photos": "https://ejemplo.com/teclado-rgb.jpg",
+  "userId": "{{UserId}}"
+}
+
+### Eliminar articulo
+
+DELETE {{Store_HostAddress}}/api/articles/{{ArticleId}}
+Authorization: Bearer {{Token}}
